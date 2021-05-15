@@ -1,0 +1,41 @@
+<html>
+<head>
+    <title>test</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <script>
+    (function (baseFontSize) {
+      const _baseFontSize = baseFontSize || 72;
+      const scale = 1;
+      let metaEl = document.querySelector('meta[name="viewport"]');
+      if (!metaEl) {
+        metaEl = document.createElement('meta');
+        metaEl.setAttribute('name', 'viewport');
+        window.document.head.appendChild(metaEl);
+      }
+      metaEl.setAttribute(
+        'content',
+        'width=device-width,user-scalable=no,initial-scale=' +
+          scale +
+          ',maximum-scale=' +
+          scale +
+          ',minimum-scale=' +
+          scale
+      );
+      const cw = document.documentElement.clientWidth || 360;
+      const clientWidth = Math.min(cw, 414);
+      document.documentElement.style.fontSize = clientWidth / (720 / _baseFontSize) + 'px';
+      const htmlFont = parseFloat(document.documentElement.style.fontSize);
+      const userFont = document.documentElement.currentStyle
+        ? parseFloat(document.documentElement.currentStyle.fontSize)
+        : parseFloat(getComputedStyle(document.documentElement, !1).fontSize);
+      htmlFont !== userFont &&
+        (document.documentElement.style.cssText =
+          'font-size: ' + ((htmlFont / userFont) * htmlFont).toFixed(2) + 'px');
+    })();
+    </script>
+</head>
+<body>
+  <div id="root"></div>
+</body>
+</html>

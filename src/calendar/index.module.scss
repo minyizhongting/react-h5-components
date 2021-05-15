@@ -1,0 +1,147 @@
+$baseFontSize: 72;
+
+@function rem($px) { 
+  @return $px / $baseFontSize * 1rem;
+}
+
+.datePicker {
+  position: relative;
+  z-index: 2;
+  .mask {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 888;
+  }
+  .currentValue {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: rgba(255,255,255,.1);
+    height: rem(56);
+    width: rem(203);
+    box-sizing: border-box;
+    border-radius: rem(16);
+    padding: 0 rem(24) 0 rem(32);
+    background: #3b3b3f;
+    .value {
+      font-size: rem(24);
+      color: #fff;
+    }
+    .icon {
+      width: rem(28);
+      height: rem(28);
+      background: #fff;
+      border-radius: rem(8);
+      position: relative;
+      &:before {
+        content: '';
+        position: absolute;
+        top: 6px;
+        left: 0;
+        width: 100%;
+        height: 1px;
+        background: #3b3b3f;
+      }
+    }
+  }
+  .picker {
+    position: absolute;
+    top: rem(74);
+    left: 0;
+    z-index: 999;
+    background-color: #3b3b3f;
+    width: rem(308);
+    border-radius: rem(16);
+    overflow: hidden;
+    .pickerTitle {
+      display: flex;
+      .item {
+        width: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: rem(88);
+        font-family: Roboto-Medium;
+        font-size: rem(24);
+        color: rgba(255, 255, 255, 0.91);
+      }
+    }
+    .scrollContainer {
+      height: rem(138);
+      display: flex;
+      .outerBox {
+        width: 50%;
+        height: rem(138);
+        overflow: hidden;
+        position: relative;
+        .line1 {
+          position: absolute;
+          width: rem(130);
+          top: rem(37);
+          right: 0;
+          height: 1px;
+          transform: scaleY(0.5);
+          background-color: rgba(255,220,16,.4);;
+          z-index: 2;
+        }
+        .line2 {
+          position: absolute;
+          width: rem(130);
+          bottom: rem(37);
+          right: 0;
+          height: 1px;
+          transform: scaleY(0.5);
+          background-color: rgba(255,220,16,.4);
+          z-index: 2;
+        }
+        .scroll {
+          overflow: visible;
+          padding: rem(37) 0;
+          position: relative;
+          z-index: 1;
+          .item {
+            font-family: Roboto-Medium;
+            font-size: rem(24);
+            color: rgba(255, 255, 255, 0.4);
+            letter-spacing: 0;
+            text-align: center;
+            height: rem(64);
+            line-height: rem(64);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+          }
+          .curr {
+            color: #FFDC10;
+          }
+        }
+      }
+      .outerBox + .outerBox {
+        .line1, .line2 {
+          right: auto;
+          left: 0;
+        }
+      }
+    }
+    .confirmBtnBox {
+      height: rem(105);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      .confirmBtn {
+        width: rem(195);
+        height: rem(52);
+        background-color: #ffdc10;
+        line-height: rem(52);
+        text-align: center;
+        border-radius: rem(16);
+        font-family: Roboto-Medium;
+        font-size: rem(24);
+        color: #000000;
+      }
+    }
+  }
+}
